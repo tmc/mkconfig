@@ -1,0 +1,25 @@
+{
+  "dummysvc": [
+    {
+      "name": "dummysvc1",
+      "port": 8080,
+      "addr": "10.0.0.1"
+    },
+    {
+      "name": "dummysvc2",
+      "port": 8080,
+      "addr": "10.0.0.2"
+    },
+    {
+      "name": "dummysvc3",
+      "port": 8080,
+      "addr": "10.0.0.3"
+    },
+    {
+      "name": "dummysvc4",
+      "port": 8080,
+      "addr": "10.0.0.4"
+    }
+  ]
+}
+

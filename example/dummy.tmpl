@@ -1,0 +1,4 @@
+# example template
+dummysvc:
+{{ range service "dummysvc"}} - {{.Addr}}:{{.Port}}
+{{ end }}

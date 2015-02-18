@@ -1,6 +1,9 @@
 package sources
 
-import "errors"
+import (
+	"errors"
+	"net/url"
+)
 
 var (
 	ErrAlreadyRegistered = errors.New("sources: already registered")
@@ -9,7 +12,7 @@ var (
 	registry map[string]InitFunc
 )
 
-type InitFunc func() (Source, error)
+type InitFunc func(path string) (Source, error)
 
 func Register(name string, initFunc InitFunc) error {
 	if _, ok := registry[name]; ok {
@@ -19,12 +22,18 @@ func Register(name string, initFunc InitFunc) error {
 	return nil
 }
 
-func Get(sourceName string) (Source, error) {
+func Get(source string) (Source, error) {
+	path, err := url.Parse(source)
+	if err != nil {
+		return nil, err
+	}
+	sourceName, sourcePath := path.Scheme, path.Host+path.Path
+
 	fn, ok := registry[sourceName]
 	if !ok {
 		return nil, ErrNotRegistered
 	}
-	return fn()
+	return fn(sourcePath)
 }
 
 func init() {
