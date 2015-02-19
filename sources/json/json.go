@@ -1,9 +1,31 @@
-// Package file provides a mkconfig.sources backend that reads from a very basic json format
+// Package json_source provides a mkconfig.sources backend that reads from a very basic json format
 //
 // Example contents of example.json:
 //
-//   host1,10.0.0.1,8080
-//   host2,10.0.0.2,8080
+//   {
+//     "dummysvc": [
+//       {
+//         "name": "dummysvc1",
+//         "port": 8080,
+//         "addr": "10.0.0.1"
+//       },
+//       {
+//         "name": "dummysvc2",
+//         "port": 8080,
+//         "addr": "10.0.0.2"
+//       },
+//       {
+//         "name": "dummysvc3",
+//         "port": 8080,
+//         "addr": "10.0.0.3"
+//       },
+//       {
+//         "name": "dummysvc4",
+//         "port": 8080,
+//         "addr": "10.0.0.4"
+//       }
+//     ]
+//   }
 
 package json_source
 
