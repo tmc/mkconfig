@@ -26,7 +26,6 @@
 //       }
 //     ]
 //   }
-
 package json_source
 
 import (

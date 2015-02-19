@@ -1,4 +1,4 @@
-// mkconfig renders templates and potentially execs
+// mkconfig renders templates
 package main
 
 import (

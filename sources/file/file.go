@@ -4,7 +4,6 @@
 //
 //   host1,10.0.0.1,8080
 //   host2,10.0.0.2,8080
-
 package file
 
 import (
