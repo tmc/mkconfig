@@ -1,4 +1,4 @@
-// mkconfig renders templates
+// Package mkconfig renders templates
 //
 // Example invocation:
 //
