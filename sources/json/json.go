@@ -31,7 +31,6 @@ package json_source
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"os"
 
 	"github.com/tmc/mkconfig/services"
@@ -56,7 +55,7 @@ func mkJSONSource(path string) (sources.Source, error) {
 		path:     path,
 		services: make(map[string][]services.Service),
 	}
-	return fs, fs.parseHosts(f)
+	return fs, json.NewDecoder(f).Decode(&fs.services)
 }
 
 func (fs *jsonSource) Service(serviceName string) ([]services.Service, error) {
@@ -65,8 +64,4 @@ func (fs *jsonSource) Service(serviceName string) ([]services.Service, error) {
 		return nil, fmt.Errorf("file backend (%s): service '%s' not found.", fs.path, serviceName)
 	}
 	return services, nil
-}
-
-func (fs *jsonSource) parseHosts(src io.Reader) error {
-	return json.NewDecoder(src).Decode(&fs.services)
 }
